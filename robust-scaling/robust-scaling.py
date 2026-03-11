@@ -4,7 +4,6 @@ def robust_scaling(values):
     values = np.array(values)
     n = len(values)
     
-    # Handle single element case immediately
     if n <= 1:
         return [0.0] if n == 1 else []
 
@@ -19,7 +18,6 @@ def robust_scaling(values):
         lower_half = values_sorted[:mid]
         upper_half = values_sorted[mid+1:]
     
-    # Check if halves are empty before calculating median
     q1 = np.median(lower_half) if lower_half.size > 0 else median
     q3 = np.median(upper_half) if upper_half.size > 0 else median
     iqr = q3 - q1
